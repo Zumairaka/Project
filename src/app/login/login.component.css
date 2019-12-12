@@ -1,0 +1,39 @@
+body,
+html {
+  height: 1300px;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/background.jpg");
+    /* Full height */
+    height: 1300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5%;
+  }
+  #content{
+    padding-top:6%;
+    padding-left: 34%;
+    padding-right: 34%;
+}
+#login{
+    padding: 5%;
+}
+#submit{
+    margin-left: 29%;
+    margin-right: 7%;
+}
+label{
+    color: white;
+    font-weight: bold;
+    margin-right: 3%;
+}
+#signup{
+    font-weight: bold;
+    color: rgb(97, 97, 231);
+}
+.dark{
+    background-color: rgba(0, 0, 0, 0.849);
+}

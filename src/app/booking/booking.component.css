@@ -1,0 +1,26 @@
+body,
+html {
+  height: 1300px;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/background.jpg");
+    /* Full height */
+    height: 1300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8%;
+  }
+  .heading{
+      margin-bottom: 2%;
+  }
+  h2{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: bolder;
+  }
+  h5{
+    font-family: Arial, Helvetica, sans-serif;    
+  }
+  

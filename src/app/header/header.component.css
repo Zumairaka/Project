@@ -1,0 +1,30 @@
+body,
+html {
+  height: 90px;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/logo.PNG");
+    /* Full height */
+    height: 90px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  ul{
+      font-weight: bolder;
+      font-size: large;
+      margin-left: 60%;
+      padding: 1.5%;
+  }
+  li{
+      margin-right: 15px;
+  }
+  #header{
+    background-color: rgba(0, 0, 0, 0.849);
+  }
+  a{
+    color: rgba(66, 253, 60, 0.884);
+}
+  

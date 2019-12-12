@@ -1,0 +1,24 @@
+<div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
+    <div class = "container-fluid col-sm-12 col-md-12 col-lg-12 col-xl-12" id = "main">
+        <div class="text-center font-weight-bold text">
+          <h1 class="text-primary">Welcome Administrator</h1>
+        </div>
+        <div class="d-flex justify-content-center logout">
+          <button class="btn btn-danger font-weight-bolder" (click)="logout()">Logout</button>
+        </div>
+        <div class = "container-fluid" id="content">
+            <div class="dark">
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-success text-center font-weight-bolder" (click)="showBookings()" id="button" name="bookings">Bookings</button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-success text-center font-weight-bolder" (click)="showUsers()" id="button" name="users">Users</button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-success text-center font-weight-bolder" (click)="showUsers()" id="button" name="users">Notifications</button>
+              </div>
+            </div>
+        </div>
+    </div>      
+</div>
+

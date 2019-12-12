@@ -1,0 +1,29 @@
+body,
+html {
+  height: 1300px;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/background.jpg");
+    /* Full height */
+    height: 1300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8%;
+}
+#content{
+    padding-top:5%;
+    padding-left: 34%;
+    padding-right: 34%;
+}
+.dark{
+    background-color: rgba(0, 0, 0, 0.849);
+    padding: 5%;
+}
+#button{
+    padding: 4%;
+    margin: 4%;
+    width: 250px;
+}

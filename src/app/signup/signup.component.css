@@ -1,0 +1,36 @@
+body,
+html {
+  height: auto;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/background.jpg");
+    /* Full height */
+    height: auto;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5%;
+}
+.dark{
+    background-color: rgba(0, 0, 0, 0.849);
+}
+#content{
+    padding-right: 30%;
+    padding-left: 30%;
+}
+#signup{
+    padding: 5%;
+}
+label{
+    color: white;
+    font-weight: bold;
+    margin-top: 2%;
+}
+#submitbt{
+    margin-left: 20%;
+}
+button{
+    margin-left: 7%;
+}
