@@ -1,0 +1,78 @@
+<div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
+  <div class="transparent">
+    <div class="d-flex justify-content-center name">
+      <h4>Welcome {{name}}</h4>
+    </div>
+    <div class="d-flex justify-content-center logout">
+      <button class="btn btn-danger font-weight-bolder" (click)="logout()">Logout</button>
+    </div>
+
+<!--Slots for the date selected-->
+    <div class = "container-fluid d-flex justify-content-center" id="content">
+      <div class="bg-dark" id = "box">
+        <form class = "form-group text-secondary" [formGroup]="bookingForm" (ngSubmit)="checkMyGame()">
+          
+          <!-- Pick A Date -->
+          <div class="d-flex justify-content-center">
+            <h3 class="font-weight-bolder font-size-xx-large text-success">Choose Your Game..</h3>
+          </div>
+          <div class="form-group">
+            <label>Pick A Date:*</label>
+            <input type="text" bsDatepicker [minDate]="today" (change)="checkStatus()" class="form-control" formControlName="date" [ngClass]="{'is-invalid': submitted && f.date.errors, 'is-valid': submitted && f.date.valid}">
+            <div *ngIf = "submitted && f.date.errors" class="invalid-feedback">
+              <div *ngIf = "submitted && f.date.errors.required">Please Choose A Date For The Play</div>
+            </div>
+            <div *ngIf = " submitted && f.date.valid" class="valid-feedback">Date is OK</div>
+          </div>
+
+          <div class = "form-group">
+            <label >Team Size:*</label>
+            <input type = "radio" formControlName="teamSize" (change)="checkStatus()" value="5s" [ngClass]="{'is-invalid': submitted && f.teamSize.errors, 'is-valid': submitted && f.teamSize.valid}">
+            <label for="5s"> 5s </label>
+            <input type = "radio" formControlName="teamSize" (change)="checkStatus()" value="7s">
+            <label for="7s"> 7s </label>
+            <div *ngIf ="submitted && f.teamSize.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.teamSize.errors.required">Please Select Your Team Size!</div>
+            </div>
+            <div *ngIf="submitted && f.teamSize.valid" class="valid-feedback">
+                <div>Team Size is OK</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Select A Time:*</label>
+            <select class="selectpicker" formControlName="time" (change)="checkStatus()" [ngClass]="{'is-invalid': submitted && f.time.errors, 'is-valid': submitted && f.time.valid}">
+              <option value="" disabled>Time</option>
+              <option *ngFor = "let time of availableTimes" [ngValue]="time">{{time}}</option>
+            </select>
+            <div *ngIf ="submitted && f.time.errors" class="invalid-feedback">
+              <div *ngIf="submitted && f.time.errors.required">Please Select A Time!</div>
+            </div>
+            <div *ngIf="submitted && f.time.valid" class="valid-feedback">
+              <div>Time is OK</div>
+            </div>
+          </div>
+
+          <div class = "form-group d-flex justify-content-center">
+            <input type = "submit" class = "btn font-weight-bold btn-link" value = "CheckAvailability">
+          </div>
+
+          <div class = "form-group">
+            <label>Grounds:</label>
+              <span>G1</span>
+              <input type="checkbox" (change)="changeGroup(1)" formControlName="ground1">
+              <span>G2</span>
+              <input type="checkbox" (change)="changeGroup(2)" formControlName="ground2">
+              <span>G3</span>
+              <input type="checkbox" (change)="changeGroup(3)" formControlName="ground3">
+          </div>
+          
+          <div class = "form-group d-flex justify-content-center">
+            <button class = "btn btn-success font-weight-bold" (click) = "bookMyGame()">BookMyGame</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -18,14 +18,15 @@ export class BookingService {
     return this.http.post('http://localhost:3000/login', user);
   }
 
-  setName(name) {
-    this.name = name;
+  checkAvailable(bookingData) {
+    return this.http.post('http://localhost:3000/booking/check', bookingData);
   }
 
-  getName() {
-    return this.name;
+  saveMyGame(bookingData) {
+    return this.http.post('http://localhost:3000/booking/save', bookingData);
   }
 
+  updateMyGame(bookingData) {
+    return this.http.post('http://localhost:3000/booking/update', bookingData);
+  }
 }
-
-

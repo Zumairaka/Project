@@ -13,11 +13,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const signupRouter = require('./src/routes/singupRoutes')();
 const loginRouter = require('./src/routes/loginRoutes')();
+const bookingRouter = require('./src/routes/bookingRoutes')();
 
-app.use('/signup',signupRouter);
-app.use('/login',loginRouter);
+app.use('/signup', signupRouter);
+app.use('/login', loginRouter);
+app.use('/booking', bookingRouter);
 
 mongoose.connect("mongodb://localhost:27017/FBMS");
+mongoose.set('useFindAndModify', false);
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Listening to" +chalk.blue(" 3000"));

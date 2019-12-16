@@ -4,6 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import * as CryptoJs from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ export class LoginComponent implements OnInit {
   loginData = new LoginData(null, null);
   submitted = false;
   status: string;
+  encPassword = 'kickoff098';
+  cypherText: string;
   // tslint:disable-next-line:max-line-length
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private serviceObject: BookingService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -49,8 +52,9 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('', { skipLocationChange: true })
               .then (() => {
                 this.storage.set('uname', this.loginData.uname);
-                this.serviceObject.setName(this.loginData.uname);
-                this.router.navigate(['booking']);
+                this.cypherText = CryptoJs.AES.encrypt(this.loginData.uname.trim(), this.encPassword.trim()).toString();
+                // console.log(this.cypherText);
+                this.router.navigate(['player', {uname: this.loginData.uname}]);
               });
           } else {
               alert(this.status);
