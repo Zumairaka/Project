@@ -1,5 +1,6 @@
 export class BookingData {
     constructor(
+        public uname: string,
         public date: string,
         public teamSize: string,
         public time: string,

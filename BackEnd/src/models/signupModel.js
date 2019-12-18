@@ -12,7 +12,6 @@ var signupSchema = new mongoose.Schema({
     uname: {
         type: String,
         required: true,
-        unique: true
     },
     password: {
         type: String,

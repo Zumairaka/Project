@@ -29,4 +29,28 @@ export class BookingService {
   updateMyGame(bookingData) {
     return this.http.post('http://localhost:3000/booking/update', bookingData);
   }
+
+  getBookingDataToday(today) {
+    return this.http.post('http://localhost:3000/booking/dataToday', {date: today});
+  }
+
+  getBookingData() {
+    return this.http.get('http://localhost:3000/booking');
+  }
+
+  getUserData(uname) {
+    return this.http.post('http://localhost:3000/signup/getUser', {name: uname});
+  }
+
+  deleteBooking(name, day, tym) {
+    return this.http.post('http://localhost:3000/booking/delete', {uname: name, date: day, time: tym});
+  }
+
+  deleteAllBooking(uname) {
+    return this.http.post('http://localhost:3000/booking/deleteAll', {name: uname});
+  }
+
+  deleteUser(uname) {
+    return this.http.post('http://localhost:3000/signup/delete', {name: uname});
+  }
 }

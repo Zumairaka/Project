@@ -13,19 +13,16 @@ html {
     background-size: cover;
     padding-bottom: 15%;
 }
-
 .logout {
-  margin-bottom: 8%;
+    margin-bottom: 8%;
 }
-.main {
-  width: 85%;
-  margin-left:8%;
+#content{
+  height: 48%;
+  width: 65%;
 }
-.table-heading {
-  padding-left: 30%;
-  font-weight : bolder;
-  font-size: large;
+#box{
+  padding: 7%;
 }
-.details {
-  margin-right: 5%;
+label{
+  color: white;
 }

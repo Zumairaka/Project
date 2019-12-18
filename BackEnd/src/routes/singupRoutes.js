@@ -26,6 +26,34 @@ function router() {
                 }
             });
         });
+
+    signupRouter.route('/getUser')
+        .post((req,res) => {
+            res.header("Access-Control-Allow-Origin","*");
+            res.header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS");
+            console.log(req.body);
+            signupModel.findOne({uname: req.body.name}, (error,data) => {
+                if (error) {
+                    res.json({'Status':'Error'});
+                } else {
+                    res.send(data);
+                }
+            });
+        });
+
+        signupRouter.route('/delete')
+        .post((req,res) => {
+            res.header("Access-Control-Allow-Origin","*");
+            res.header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS");
+            signupModel.findOneAndDelete({uname: req.body.name}, (error,data) => {
+                if (error) {
+                    res.json({'Status':'Error'});
+                } else {
+                    res.json({'Status':'Deleted The Player Details'});
+                }
+            });
+        });        
+
     return signupRouter;
 }
 module.exports = router;

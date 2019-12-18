@@ -33,6 +33,10 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['users']);
   }
 
+  notifications() {
+    this.router.navigate(['notifications']);
+  }
+
   logout(): void {
     this.storage.remove('admin');
     this.router.navigate(['']);

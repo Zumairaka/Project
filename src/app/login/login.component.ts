@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
     }
     this.loginData.uname = this.loginForm.get('uname').value;
     this.loginData.password = this.loginForm.get('password').value;
-    // console.log(this.loginData);
-    if (this.loginData.uname === 'kickoff_admin' && this.loginData.password === 'Kickoff@123') {
+    console.log(this.loginData);
+    if ((this.loginData.uname === 'kickoff_admin') && (this.loginData.password === 'Kickoff@987')) {
       this.router.navigate(['admin']);
       this.storage.set('admin', this.loginData.uname);
     } else {

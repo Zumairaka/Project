@@ -1,3 +1,5 @@
+import { BookingService } from './../booking.service';
+import { BookingData } from './../choosegame/booking.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
@@ -10,7 +12,10 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 export class ShowbookingsComponent implements OnInit {
 
   sessionVal;
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private router: Router) { }
+  bookingData: BookingData[];
+  status: string;
+  message: string;
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private serviceObject: BookingService, private router: Router) { }
 
   ngOnInit() {
     this.sessionVal = this.storage.get('admin');
@@ -18,12 +23,51 @@ export class ShowbookingsComponent implements OnInit {
 
     if (this.sessionVal === '') {
       this.router.navigate(['']);
+
     } else if (this.sessionVal === 'kickoff_admin') {
+
+      this.serviceObject.getBookingData().subscribe((data) => {
+        this.status = JSON.parse(JSON.stringify(data)).Status;
+        if (this.status === 'Error') {
+          alert(this.status);
+        } else if (this.status === 'No_Data') {
+          this.message = 'No Bookings';
+        } else {
+          this.bookingData = JSON.parse(JSON.stringify(data));
+        }
+      });
       this.router.navigate(['showBookings']);
+
     } else {
       this.router.navigate(['']);
     }
   }
+
+  logout() {
+    this.storage.remove('admin');
+    this.router.navigate(['']);
+  }
+
+  cancel() {
+    this.router.navigate(['admin']);
+  }
+
+  deleteBooking(uname, date, time) {
+    this.serviceObject.deleteBooking(uname, date, time).subscribe((data) => {
+      this.status = JSON.parse(JSON.stringify(data)).Status;
+      if (this.status === 'Error') {
+        alert(this.status);
+      } else {
+        alert(this.status);
+        this.ngOnInit();
+      }
+    });
+  }
+
+  viewDetails(uname) {
+    this.router.navigate(['details', {name: uname}]);
+  }
+
 }
 
 

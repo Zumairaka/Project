@@ -14,7 +14,7 @@ import * as CryptoJs from 'crypto-js';
 })
 export class ChoosegameComponent implements OnInit {
 
-  bookingData = new BookingData(null, null, null, null, null, null);
+  bookingData = new BookingData(null,null, null, null, null, null, null);
   checkingData: BookingData;
   today = new Date();
   myDate: string;
@@ -54,6 +54,7 @@ export class ChoosegameComponent implements OnInit {
       }
 
     this.bookingForm = this.formBuilder.group({
+        uname: [this.name],
         date: ['', Validators.required],
         teamSize: ['', Validators.required],
         time: ['', Validators.required],
@@ -85,6 +86,7 @@ export class ChoosegameComponent implements OnInit {
       return;
     }
     this.myDate = this.bookingForm.get('date').value;
+    this.bookingData.uname = this.name;
     this.bookingData.date = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
     this.bookingData.teamSize = this.bookingForm.get('teamSize').value;
     this.bookingData.time = this.bookingForm.get('time').value;
@@ -97,7 +99,7 @@ export class ChoosegameComponent implements OnInit {
         // console.log(data);
         this.status = JSON.parse(JSON.stringify(data)).Status;
         if (this.status === 'Available') {
-          if (this.bookingData.teamSize === '7s' && this.checkData === false) {
+          if ((this.bookingData.teamSize === '7s') && !this.checkData) {
             // All three available and 7s is chosen
             alert('The Ground is Available for 7s!');
             this.bookingForm = this.formBuilder.group({
@@ -113,7 +115,7 @@ export class ChoosegameComponent implements OnInit {
             this.bookingData.ground3 = this.bookingForm.get('ground3').value;
             this.checkData = true;
             this.checkEmpty = true;
-          } else if (this.bookingData.teamSize === '5s' && this.checkData === false) {
+          } else if ((this.bookingData.teamSize === '5s') && !this.checkData) {
             // All three available and 5s is chosen
               alert('The Ground G1 is available for 5s!');
               this.bookingForm = this.formBuilder.group({
@@ -136,11 +138,11 @@ export class ChoosegameComponent implements OnInit {
           this.checkEmpty = false;
           this.checkingData = JSON.parse(JSON.stringify(data));
           console.log(this.checkingData);
-          if (this.bookingData.teamSize === '7s' && this.checkData === false) {
+          if ((this.bookingData.teamSize === '7s') && !this.checkData) {
             alert('The Ground is not available for 7s. Please choose another time!');
             this.checkData = true;
-          } else if (this.bookingData.teamSize === '5s' && this.checkData === false) {
-              if (this.checkData === false && this.checkingData.ground1 === true && this.checkingData.ground2 === false) {
+          } else if ((this.bookingData.teamSize === '5s') && !this.checkData) {
+              if (!this.checkData && (this.checkingData.ground1 === true) && (this.checkingData.ground2 === false)) {
                 alert('The Ground G1 has already been booked. G2 is available for 5s!');
                 this.checkData = true;
                 this.bookingForm = this.formBuilder.group({
@@ -154,7 +156,7 @@ export class ChoosegameComponent implements OnInit {
                 this.bookingData.ground1 = this.bookingForm.get('ground1').value;
                 this.bookingData.ground2 = this.bookingForm.get('ground2').value;
                 this.bookingData.ground3 = this.bookingForm.get('ground3').value;
-              } else if (this.checkData === false && this.checkingData.ground2 === true && this.checkingData.ground3 === false) {
+              } else if (!this.checkData && (this.checkingData.ground2 === true) && (this.checkingData.ground3 === false)) {
                 alert('The Grounds G1 and G2 has already been booked. G3 is available for 5s!');
                 this.bookingForm = this.formBuilder.group({
                   date: [this.myDate, Validators.required],
@@ -206,6 +208,9 @@ export class ChoosegameComponent implements OnInit {
   logout(): void {
     this.storage.remove('uname');
     this.router.navigate(['']);
+  }
+  cancel() {
+    this.router.navigate(['player', {uname: this.name}]);
   }
 
 }
