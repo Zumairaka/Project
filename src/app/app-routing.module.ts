@@ -1,3 +1,6 @@
+import { UserbookingComponent } from './userbooking/userbooking.component';
+import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
+import { EditComponent } from './edit/edit.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChoosegameComponent } from './choosegame/choosegame.component';
 import { PlayerComponent } from './player/player.component';
@@ -21,7 +24,10 @@ const routes: Routes = [
                         {path: 'users', component: UsersComponent},
                         {path: 'chooseGame', component: ChoosegameComponent},
                         {path: 'notifications', component: NotificationsComponent},
-                        {path: 'details', component: DetailsComponent}
+                        {path: 'details', component: DetailsComponent},
+                        {path: 'edit', component: EditComponent},
+                        {path: 'showMyBookings', component: ShowmybookingsComponent},
+                        {path: 'userBookings', component: UserbookingComponent}
                        ];
 
 @NgModule({

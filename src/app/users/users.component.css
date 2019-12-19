@@ -1,14 +1,40 @@
 body,
 html {
-  height: 1300px;
+  height: auto;
 }
 .bg{
     /* The image used */
     background-image: url("../../assets/Images/background.jpg");
     /* Full height */
-    height: 1300px;
+    height: auto;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 15%;
+}
+
+.logout {
+  margin-bottom: 8%;
+  color:black;
+}
+.main {
+  width: 85%;
+  margin-left:8%;
+}
+.table-heading {
+  padding-left: 30%;
+  font-weight : bolder;
+  font-size: large;
+}
+.details {
+  margin-right: 5%;
+}
+h4 {
+  color: rgb(4, 4, 95);
+  margin-bottom: 8%;
+}
+h5 {
+  font-size: xx-large;
+  color: darkgreen;
 }

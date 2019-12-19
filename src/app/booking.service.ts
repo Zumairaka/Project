@@ -14,6 +14,10 @@ export class BookingService {
     return this.http.post('http://localhost:3000/signup', user);
   }
 
+  editAccountData(user) {
+    return this.http.post('http://localhost:3000/signup/edit', user);
+  }
+
   loginVerify(user) {
     return this.http.post('http://localhost:3000/login', user);
   }
@@ -26,10 +30,6 @@ export class BookingService {
     return this.http.post('http://localhost:3000/booking/save', bookingData);
   }
 
-  updateMyGame(bookingData) {
-    return this.http.post('http://localhost:3000/booking/update', bookingData);
-  }
-
   getBookingDataToday(today) {
     return this.http.post('http://localhost:3000/booking/dataToday', {date: today});
   }
@@ -38,8 +38,16 @@ export class BookingService {
     return this.http.get('http://localhost:3000/booking');
   }
 
+  getMyBookingData(name) {
+    return this.http.post('http://localhost:3000/booking/myData', {uname: name});
+  }
+
   getUserData(uname) {
     return this.http.post('http://localhost:3000/signup/getUser', {name: uname});
+  }
+
+  getUsersData() {
+    return this.http.get('http://localhost:3000/signup/getUsers');
   }
 
   deleteBooking(name, day, tym) {

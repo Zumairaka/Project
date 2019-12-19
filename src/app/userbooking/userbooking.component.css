@@ -16,7 +16,7 @@ html {
 
 .logout {
   margin-bottom: 8%;
-  color:black;
+  color: rgb(4, 4, 95);
 }
 .main {
   width: 85%;
@@ -30,11 +30,8 @@ html {
 .details {
   margin-right: 5%;
 }
-h4 {
-  color: rgb(4, 4, 95);
-  margin-bottom: 8%;
-}
 h5 {
   font-size: xx-large;
   color: darkgreen;
+  margin-bottom: 5%;
 }

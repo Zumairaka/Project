@@ -25,6 +25,8 @@ import { ChoosegameComponent } from './choosegame/choosegame.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
+import { UserbookingComponent } from './userbooking/userbooking.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { EditComponent } from './edit/edit.component';
     NotificationsComponent,
     DetailsComponent,
     EditComponent,
+    ShowmybookingsComponent,
+    UserbookingComponent,
   ],
   imports: [
     BrowserModule,

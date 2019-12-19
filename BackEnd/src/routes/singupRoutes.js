@@ -41,6 +41,19 @@ function router() {
             });
         });
 
+        signupRouter.route('/getUsers')
+        .get((req,res) => {
+            res.header("Access-Control-Allow-Origin","*");
+            res.header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS");
+            signupModel.find((error,data) => {
+                if (error) {
+                    res.json({'Status':'Error'});
+                } else {
+                    res.send(data);
+                }
+            });
+        });
+
         signupRouter.route('/delete')
         .post((req,res) => {
             res.header("Access-Control-Allow-Origin","*");
@@ -52,7 +65,21 @@ function router() {
                     res.json({'Status':'Deleted The Player Details'});
                 }
             });
-        });        
+        });   
+        
+        signupRouter.route('/edit')
+        .post((req,res) => {
+            res.header("Access-Control-Allow-Origin","*");
+            res.header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS");
+            console.log(req.body);
+            signupModel.findOneAndUpdate({uname: req.body.uname}, req.body, (error,data) => {
+                if (error) {
+                    res.json({'Status':'Error'});
+                } else {
+                    res.json({'Status':'Updated The Player Details Successfully'});
+                }
+            });
+        });
 
     return signupRouter;
 }

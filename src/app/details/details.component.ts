@@ -15,12 +15,14 @@ export class DetailsComponent implements OnInit {
   status: string;
   userData: UserData;
   uname: string;
+  flag = false;
   // tslint:disable-next-line:max-line-length
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private route: ActivatedRoute, private serviceObject: BookingService, private router: Router) { }
 
   ngOnInit() {
     this.sessionVal = this.storage.get('admin');
     this.uname = this.route.snapshot.params.name;
+    this.flag = this.route.snapshot.params.flg;
     // console.log(this.sessionVal);
 
     if (this.sessionVal === '') {
@@ -44,8 +46,8 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  showAll(uname) {
-    console.log(uname);
+  showAll(name) {
+    this.router.navigate(['userBookings', {uname: name}]);
   }
 
   deleteUser(uname) {
@@ -68,8 +70,12 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  cancel() {
-    this.router.navigate(['showBookings']);
+  cancel(flag) {
+    if (flag) {
+      this.router.navigate(['showBookings']);
+      } else {
+        this.router.navigate(['users']);
+      }
   }
 
   logout() {

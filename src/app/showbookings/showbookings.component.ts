@@ -15,6 +15,7 @@ export class ShowbookingsComponent implements OnInit {
   bookingData: BookingData[];
   status: string;
   message: string;
+  flag = true;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private serviceObject: BookingService, private router: Router) { }
 
   ngOnInit() {
@@ -43,11 +44,6 @@ export class ShowbookingsComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.storage.remove('admin');
-    this.router.navigate(['']);
-  }
-
   cancel() {
     this.router.navigate(['admin']);
   }
@@ -65,7 +61,7 @@ export class ShowbookingsComponent implements OnInit {
   }
 
   viewDetails(uname) {
-    this.router.navigate(['details', {name: uname}]);
+    this.router.navigate(['details', {name: uname, flg: this.flag}]);
   }
 
 }

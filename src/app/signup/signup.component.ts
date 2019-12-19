@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
         if (this.status === 'Success') {
           this.router.navigateByUrl('', { skipLocationChange : true })
             .then(() => {
-              alert('Successfully Signed Up !')
+              alert('Successfully Signed Up !');
               this.router.navigate(['login']);
             });
         } else {

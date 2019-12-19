@@ -1,3 +1,153 @@
-<p>
-  edit works!
-</p>
+<div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
+  <div class = "container-fluid col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class = "container-fluid" id = "content"> 
+          <div class="dark" id="signup">
+          <form class = "form-group text-secondary" [formGroup]="signupForm" (ngSubmit)="editAccountDetails()"> 
+              <div class = "text-success text-center font-weight-bolder font-size-xx-large">
+                <h3>Edit Your Details.. </h3>
+              </div>
+
+              <div class = "text-danger text-center font-weight-bold">
+                <p>Fields With * Are Mandatory</p>
+              </div>   
+
+              <div class = "form-group">
+                  <label>First Name*</label>
+                  <input type = "text" class = "form-control" formControlName = "fname" placeholder = "Enter First Name" [ngClass]="{'is-invalid': submitted && f.fname.errors, 'is-valid': submitted && f.fname.valid}">
+                  <div *ngIf ="submitted && f.fname.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.fname.errors.required">First Name is required!</div>
+                  </div>
+                  <div *ngIf="submitted && f.fname.valid" class="valid-feedback">
+                      <div>First Name is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Last Name</label>
+                  <input type = "text" class = "form-control" formControlName = "lname" placeholder = "Enter Last Name" [ngClass]="{'is-invalid': submitted && f.lname.errors, 'is-valid': submitted && f.lname.valid}">
+                  <div *ngIf ="submitted && f.lname.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.lname.errors.required">Last Name is required!</div>
+                  </div>
+                  <div *ngIf="submitted && f.lname.valid" class="valid-feedback">
+                      <div>Last Name is OK</div>
+                  </div>
+              </div>
+             
+              <div class = "form-group">
+                  <label>Create Password*</label>
+                  <input type = "password" class = "form-control" placeholder="Enter Password" formControlName = "password" [ngClass]="{'is-invalid': submitted && f.password.errors, 'is-valid': submitted && f.password.valid}">
+                  <div *ngIf ="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.password.errors.required">Password is required!</div>
+                      <div *ngIf="submitted && f.password.errors.pattern">Password must be of atleast 8 characters and must have atleast one capital letter, one small letter and one number!</div>
+                  </div>
+                  <div *ngIf="submitted && f.password.valid" class="valid-feedback">
+                      <div>Password is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Confirm Password*</label>
+                  <input type = "password" class = "form-control" placeholder="Re Enter Password" formControlName = "confirmPassword" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors, 'is-valid': submitted && f.confirmPassword.valid}">
+                  <div *ngIf ="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.confirmPassword.errors.required">Confirm Password is required!</div>
+                      <div *ngIf="(signupForm.get('confirmPassword').errors) && (signupForm.get('confirmPassword').errors.confirmPassword)">Password and Confirm Password does not match!</div>
+                  </div>
+                  <div *ngIf="submitted && f.confirmPassword.valid" class="valid-feedback">
+                      <div>Confirm Password is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Email*</label>
+                  <input type = "email" class = "form-control" formControlName = "email" placeholder = "Enter Email Id" [ngClass]="{'is-invalid': submitted && f.email.errors, 'is-valid': submitted && f.email.valid}">
+                  <div *ngIf ="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.email.errors.required">Email Id is required!</div>
+                      <div *ngIf="submitted && f.email.errors.pattern">Please Enter a Valid Email Id!</div>
+                  </div>
+                  <div *ngIf="submitted && f.email.valid" class="valid-feedback">
+                      <div>Email Id is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Phone Number*</label>
+                  <input type = "text" class = "form-control" formControlName = "phone" placeholder = "Enter Phone Number" [ngClass]="{'is-invalid': submitted && f.phone.errors, 'is-valid': submitted && f.phone.valid}">
+                  <div *ngIf ="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.phone.errors.required">Phone Number is required!</div>
+                      <div *ngIf="submitted && f.phone.errors.pattern">Please Enter a Valid Phone Number!</div>
+                  </div>
+                  <div *ngIf="submitted && f.phone.valid" class="valid-feedback">
+                      <div>Phone Number is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Alternative Phone Number*</label>
+                  <input type = "text" class = "form-control" formControlName = "phoneAlt" placeholder = "Enter Alternative Phone Number" [ngClass]="{'is-invalid': submitted && f.phoneAlt.errors, 'is-valid': submitted && f.phoneAlt.valid}">
+                  <div *ngIf ="submitted && f.phoneAlt.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.phoneAlt.errors.required">Phone Number is required!</div>
+                      <div *ngIf="submitted && f.phoneAlt.errors.pattern">Please Enter a Valid Phone Number!</div>
+                  </div>
+                  <div *ngIf="submitted && f.phoneAlt.valid" class="valid-feedback">
+                      <div>Phone Number is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Age*</label>
+                  <input type = "text" class = "form-control" formControlName = "age" placeholder = "Enter Age" [ngClass]="{'is-invalid': submitted && f.age.errors, 'is-valid': submitted && f.age.valid}">
+                  <div *ngIf ="submitted && f.age.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.age.errors.required">Age is required!</div>
+                      <div *ngIf="submitted && f.age.errors.pattern">Age Must be a Number!</div>
+                  </div>
+                  <div *ngIf="submitted && f.age.valid" class="valid-feedback">
+                      <div>Age is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <label>Club Name*</label>
+                  <input type = "text" class = "form-control" formControlName = "cname" placeholder = "Enter Club Name" [ngClass]="{'is-invalid': submitted && f.cname.errors, 'is-valid': submitted && f.cname.valid}">
+                  <div *ngIf ="submitted && f.cname.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.cname.errors.required">Club Name is required!</div>
+                      <div *ngIf="submitted && f.cname.errors.minlength">Club Name should have atleast 3 characters!</div>
+                  </div>
+                  <div *ngIf="submitted && f.cname.valid" class="valid-feedback">
+                      <div>Club Name is OK</div>
+                  </div>
+              </div> 
+
+                <div class = "form-group">
+                  <label>Locality*</label>
+                  <input type = "text" class = "form-control" formControlName = "locality" placeholder = "Enter Locality" [ngClass]="{'is-invalid': submitted && f.locality.errors, 'is-valid': submitted && f.locality.valid}">
+                  <div *ngIf ="submitted && f.locality.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.locality.errors.required">Locality is required!</div>
+                      <div *ngIf="submitted && f.locality.errors.minlength">Locality should have atleast 3 characters!</div>
+                  </div>
+                  <div *ngIf="submitted && f.locality.valid" class="valid-feedback">
+                      <div>Locality is OK</div>
+                  </div>
+              </div> 
+
+              <div class = "form-group">
+                  <label>Address*</label>
+                  <textarea formControlName = "address" placeholder="Enter Address" class = "form-control" [ngClass]="{'is-invalid': submitted && f.address.errors, 'is-valid': submitted && f.address.valid}"></textarea>                 
+                  <div *ngIf ="submitted && f.address.errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f.address.errors.required">Address is required!</div>
+                  </div>
+                  <div *ngIf="submitted && f.address.valid" class="valid-feedback">
+                      <div>Address is OK</div>
+                  </div>
+              </div>
+
+              <div class = "form-group">
+                  <input type = "submit" class = "btn btn-success font-weight-bold" value = "Update" name = "submit" id = "submitbt">
+                  <button type = "reset" class = "btn btn-danger font-weight-bold" (click)="reset()" value = "reset">Reset</button>
+                  <button class="btn btn-secondary font-weight-bold" (click)="cancel()">Cancel</button>
+              </div>
+          </form>
+          </div>
+      </div>
+  </div>
+    
+</div>

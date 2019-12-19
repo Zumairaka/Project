@@ -15,23 +15,24 @@ import * as CryptoJs from 'crypto-js';
 export class ChoosegameComponent implements OnInit {
 
   bookingData = new BookingData(null,null, null, null, null, null, null);
-  checkingData: BookingData;
+  checkingData: BookingData[];
   today = new Date();
   myDate: string;
   bookingForm: FormGroup;
   sessionVal: string;
   name: string;
+  ground1 = false;
+  ground2 = false;
+  ground3 = false;
+  leng = 0;
   submitted = false;
-  isDisabled1 = false;
-  isDisabled2 = false;
-  isDisabled3 = false;
   count: number;
   checkGame: boolean;
   checkData: boolean;
-  checkEmpty: boolean;
   status: string;
   availableTimes = ['3pm-4pm', '4pm-5pm', '5pm-6pm', '6pm-7pm', '7pm-8pm', '8pm-9pm', '9pm-10pm', '10pm-11pm', '11pm-12am',
-              '12am-1am', '1am-2am', '2am-3am', '3am-4am', '4am-5am', '5am-6am'];
+  '12am-1am', '1am-2am', '2am-3am', '3am-4am', '4am-5am', '5am-6am'];
+
   // tslint:disable-next-line:max-line-length
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private datePipe: DatePipe, private formBuilder: FormBuilder, private serviceObject: BookingService, private route: ActivatedRoute, private router: Router) { }
 
@@ -67,21 +68,11 @@ export class ChoosegameComponent implements OnInit {
 
   get f() { return this.bookingForm.controls; }
 
-  changeGroup(no) {
-    if (no === 1) {
-      this.isDisabled1 = true;
-    } else if (no === 2) {
-      this.isDisabled2 = true;
-    } else {
-      this.isDisabled3 = true;
-    }
-  }
-
   checkMyGame() {
     // console.log(this.bookingForm);
     this.submitted = true;
     this.checkGame = true;
-    this.checkData = false;
+    this.checkData = true;
     if (this.bookingForm.invalid === true) {
       return;
     }
@@ -94,13 +85,45 @@ export class ChoosegameComponent implements OnInit {
     this.bookingData.ground2 = this.bookingForm.get('ground2').value;
     this.bookingData.ground3 = this.bookingForm.get('ground3').value;
 
+    // console.log(this.bookingData);
     this.serviceObject.checkAvailable(this.bookingData)
       .subscribe((data) => {
         // console.log(data);
         this.status = JSON.parse(JSON.stringify(data)).Status;
-        if (this.status === 'Available') {
-          if ((this.bookingData.teamSize === '7s') && !this.checkData) {
-            // All three available and 7s is chosen
+        /// console.log(this.status);
+        if (this.status === 'Error') {
+          alert(this.status);
+        } else {
+          // Some bookings May or Maynot be there.
+
+          this.checkingData = JSON.parse(JSON.stringify(data));
+          console.log(this.checkingData);
+
+          // mark the grounds which are booked.
+          if (this.checkingData.length !== 0) {
+            let i = 0;
+            while (this.leng !== this.checkingData.length) {
+              if (this.checkingData[i].ground1 === true) {
+                this.ground1 = true;
+              }
+              if (this.checkingData[i].ground2 === true) {
+                this.ground2 = true;
+              }
+              if (this.checkingData[i].ground3 === true) {
+                this.ground3 = true;
+              }
+              i++; this.leng++;
+            }
+          }
+
+          alert(this.ground1); alert(this.ground2); alert(this.ground3);
+          if ((this.bookingData.teamSize === '7s') && (this.checkData === true) && (this.checkingData.length !== 0)) {
+            this.checkData = false;
+            alert('The Ground is not available for 7s. Please choose another time!');
+
+          } else if ((this.bookingData.teamSize === '7s') && (this.checkData === true) && (this.checkingData.length === 0)) {
+            // All three available and 7s is chosen.
+            this.checkData = false;
             alert('The Ground is Available for 7s!');
             this.bookingForm = this.formBuilder.group({
               date: [this.myDate, Validators.required],
@@ -113,69 +136,66 @@ export class ChoosegameComponent implements OnInit {
             this.bookingData.ground1 = this.bookingForm.get('ground1').value;
             this.bookingData.ground2 = this.bookingForm.get('ground2').value;
             this.bookingData.ground3 = this.bookingForm.get('ground3').value;
-            this.checkData = true;
-            this.checkEmpty = true;
-          } else if ((this.bookingData.teamSize === '5s') && !this.checkData) {
-            // All three available and 5s is chosen
-              alert('The Ground G1 is available for 5s!');
-              this.bookingForm = this.formBuilder.group({
-                date: [this.myDate, Validators.required],
-                teamSize: [this.bookingData.teamSize, Validators.required],
-                time: [this.bookingData.time, Validators.required],
-                ground1: [{value: true, disabled: true}],
-                ground2: [{value: false, disabled: true}],
-                ground3: [{value: false, disabled: true}]
-              });
-              this.bookingData.ground1 = this.bookingForm.get('ground1').value;
-              this.bookingData.ground2 = this.bookingForm.get('ground2').value;
-              this.bookingData.ground3 = this.bookingForm.get('ground3').value;
-              this.checkData = true;
-              this.checkEmpty = true;
-          }
-        } else {
-          // Some bookings are already there. So not available for 7s
 
-          this.checkEmpty = false;
-          this.checkingData = JSON.parse(JSON.stringify(data));
-          console.log(this.checkingData);
-          if ((this.bookingData.teamSize === '7s') && !this.checkData) {
-            alert('The Ground is not available for 7s. Please choose another time!');
-            this.checkData = true;
-          } else if ((this.bookingData.teamSize === '5s') && !this.checkData) {
-              if (!this.checkData && (this.checkingData.ground1 === true) && (this.checkingData.ground2 === false)) {
+          } else if ((this.bookingData.teamSize === '5s') && (this.checkData === true) && (this.checkingData.length === 0)) {
+            // All three available and 5s is chosen.
+
+            alert('The Ground G1 is available for 5s!');
+            this.bookingForm = this.formBuilder.group({
+              date: [this.myDate, Validators.required],
+              teamSize: [this.bookingData.teamSize, Validators.required],
+              time: [this.bookingData.time, Validators.required],
+              ground1: [{value: true, disabled: true}],
+              ground2: [{value: false, disabled: true}],
+              ground3: [{value: false, disabled: true}]
+            });
+            this.bookingData.ground1 = this.bookingForm.get('ground1').value;
+            this.bookingData.ground2 = this.bookingForm.get('ground2').value;
+            this.bookingData.ground3 = this.bookingForm.get('ground3').value;
+            this.checkData = false;
+
+          // tslint:disable-next-line:max-line-length
+          } else if ((this.bookingData.teamSize === '5s') && (this.checkData === true) && (this.checkingData.length !== 0) && (this.ground3 === false) && (this.ground1 === true) && (this.ground2 === false)) {
+                // ground 1 booked, ground 2 available.
+
                 alert('The Ground G1 has already been booked. G2 is available for 5s!');
-                this.checkData = true;
+                this.checkData = false;
                 this.bookingForm = this.formBuilder.group({
                   date: [this.myDate, Validators.required],
                   teamSize: [this.bookingData.teamSize, Validators.required],
                   time: [this.bookingData.time, Validators.required],
-                  ground1: [{value: true, disabled: true}],
+                  ground1: [{value: false, disabled: true}],
                   ground2: [{value: true, disabled: true}],
                   ground3: [{value: false, disabled: true}]
                 });
                 this.bookingData.ground1 = this.bookingForm.get('ground1').value;
                 this.bookingData.ground2 = this.bookingForm.get('ground2').value;
                 this.bookingData.ground3 = this.bookingForm.get('ground3').value;
-              } else if (!this.checkData && (this.checkingData.ground2 === true) && (this.checkingData.ground3 === false)) {
+
+              // tslint:disable-next-line:max-line-length
+              } else if ((this.bookingData.teamSize === '5s') && (this.checkData === true) && (this.checkingData.length !== 0) && (this.ground1 === true) && (this.ground2 === true) && (this.ground3 === false)) {
+
+                // Ground 1 and 2 booked, 3 available.
                 alert('The Grounds G1 and G2 has already been booked. G3 is available for 5s!');
                 this.bookingForm = this.formBuilder.group({
                   date: [this.myDate, Validators.required],
                   teamSize: [this.bookingData.teamSize, Validators.required],
                   time: [this.bookingData.time, Validators.required],
-                  ground1: [{value: true, disabled: true}],
-                  ground2: [{value: true, disabled: true}],
+                  ground1: [{value: false, disabled: true}],
+                  ground2: [{value: false, disabled: true}],
                   ground3: [{value: true, disabled: true}]
                 });
                 this.bookingData.ground1 = this.bookingForm.get('ground1').value;
                 this.bookingData.ground2 = this.bookingForm.get('ground2').value;
                 this.bookingData.ground3 = this.bookingForm.get('ground3').value;
-                this.checkData = true;
-              } else {
-                alert('The Grounds are not available at this time. Please pick another time!');
-                this.checkData = true;
+                this.checkData = false;
+
+              // tslint:disable-next-line:max-line-length
+              } else if ((this.checkData === true) && (this.ground3 === true) && (this.bookingData.teamSize === '5s') && (this.checkingData.length !== 0)) {
+                this.checkData = false;
+                alert('The Grounds are not available for the selected time. Please choose another time!');
               }
           }
-        }
       });
   }
 
@@ -184,17 +204,10 @@ export class ChoosegameComponent implements OnInit {
   }
 
   bookMyGame() {
-    if (this.checkGame === true && this.checkEmpty === true) {
+    this.checkData = false;
+    if (this.checkGame === true) {
       // console.log(this.bookingData);
       this.serviceObject.saveMyGame(this.bookingData)
-        .subscribe((data) => {
-          this.status = JSON.parse(JSON.stringify(data)).Status;
-          alert(this.status);
-          this.router.navigate(['player', {uname: this.name}]);
-        });
-    } else if (this.checkGame === true && this.checkEmpty === false) {
-      this.checkData = true;
-      this.serviceObject.updateMyGame(this.bookingData)
         .subscribe((data) => {
           this.status = JSON.parse(JSON.stringify(data)).Status;
           alert(this.status);
@@ -205,10 +218,6 @@ export class ChoosegameComponent implements OnInit {
     }
   }
 
-  logout(): void {
-    this.storage.remove('uname');
-    this.router.navigate(['']);
-  }
   cancel() {
     this.router.navigate(['player', {uname: this.name}]);
   }

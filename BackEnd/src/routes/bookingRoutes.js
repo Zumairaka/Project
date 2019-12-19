@@ -8,7 +8,7 @@ function router() {
         .get((req,res) => {
             res.header('Access-Control-Allow-Origin','*');
             res.header('Access-Control-Allow-Method: PUT, POST, GET, PATCH, DELETE, OPTIONS');
-            bookingModel.find((error,data) => {
+            bookingModel.find({}).sort({'date':'desc','time':'asc'}).exec(function (error,data) {
                 if (error) {
                     res.json({'Status':'Error'});
                 } else if (!data) {
@@ -23,23 +23,26 @@ function router() {
         .post((req,res) => {
             res.header('Access-Control-Allow-Origin','*');
             res.header('Access-Control-Allow-Method: PUT, POST, GET, PATCH, DELETE, OPTIONS');
-            // console.log(req.body);
-            bookingModel.findOne({date:req.body.date, time:req.body.time}, (error,data) => {
-                if (error) {
-                    res.json({'Status':'Error'});
-                } else if(!data) {
-                    res.json({'Status':'Available'});
-                } else {
-                    res.send(data);
-                }
+             console.log(req.body);
+            bookingModel.find({$and:[{date:req.body.date}, {time:req.body.time}]}, (error, data) => {
+                    console.log('inside');
+                            if (error) {
+                                res.json({'Status':'Error'});
+                            } else if(!data) {
+                                console.log('!data')
+                                res.json({'Status':'Available'});
+                            } else {
+                                console.log('data');
+                                res.send(data);
+                            }
+                        });
             });
-        });
 
         bookingRouter.route('/save')
         .post((req,res) => {
             res.header('Access-Control-Allow-Origin','*');
             res.header('Access-Control-Allow-Method: PUT, POST, GET, PATCH, DELETE, OPTIONS');
-            // console.log(req.body);
+             console.log(req.body);
             var bookingData = new bookingModel(req.body);
             bookingData.save((error,data) => {
                 if (error) {
@@ -69,7 +72,23 @@ function router() {
                 res.header('Access-Control-Allow-Origin','*');
                 res.header('Access-control-Allow-Method: GET, POST, PUT, DELETE, OPTIONS, PATCH');
                 // console.log(req.body);
-                bookingModel.find({date: req.body.date}, (error, data) => {
+                bookingModel.find({date: req.body.date}).sort({'time':'asc'}).exec(function (error, data) {
+                    if(error) {
+                        res.json({'Status':'Error'});
+                    } else if (!data) {
+                        res.json({'Status':'No_Data'});
+                    } else {
+                        res.send(data);
+                    }
+                });
+            });
+
+            bookingRouter.route('/myData')
+            .post((req,res) => {
+                res.header('Access-Control-Allow-Origin','*');
+                res.header('Access-control-Allow-Method: GET, POST, PUT, DELETE, OPTIONS, PATCH');
+                // console.log(req.body);
+                bookingModel.find({uname: req.body.uname}).sort({'date':'desc','time':'asc'}).exec(function (error, data) {
                     if(error) {
                         res.json({'Status':'Error'});
                     } else if (!data) {
@@ -89,7 +108,7 @@ function router() {
                     if (error) {
                         res.json({'Status':'Error'});
                     } else {
-                        res.json({'Status':'Successfully Deleted!'});
+                        res.json({'Status':'Deleted This Game Successfully!'});
                     }
                 });
             });

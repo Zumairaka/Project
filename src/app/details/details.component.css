@@ -18,11 +18,32 @@ html {
 }
 #content{
   height: 48%;
-  width: 65%;
+  width: 75%;
 }
 #box{
-  padding: 7%;
+  padding: 5%;
 }
 label{
   color: white;
+  font-weight: bold;
+  font-size: medium;
+  margin-right: 8%;
+}
+span {
+  color: green;
+  font-weight: bolder;
+  font-size: large;
+}
+.buttn {
+  margin-right: 4%;
+}
+h4 {
+  color: rgb(4, 4, 95);
+  margin-bottom: 8%;
+}
+#h3 {
+  margin-bottom: 6%;
+}
+.dark{
+  background-color: rgba(0, 0, 0, 0.849);
 }

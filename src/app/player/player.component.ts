@@ -66,8 +66,14 @@ export class PlayerComponent implements OnInit {
     this.router.navigate(['chooseGame', {name: this.name}]);
   }
 
+  editAccount(name) {
+    this.router.navigate(['edit', {uname: name}]);
+  }
 
-  
+  showMyBookings(name) {
+    this.router.navigate(['showMyBookings', {uname: name}]);
+  }
+
   logout(): void {
     this.storage.remove('uname');
     this.router.navigate(['']);
