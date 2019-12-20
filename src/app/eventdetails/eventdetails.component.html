@@ -1,0 +1,36 @@
+<div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
+  <div class="transparent">
+    <div class="d-flex justify-content-center">
+      <h4>Admin</h4>
+    </div>
+
+    <div class = "container-fluid d-flex justify-content-center" id="content">
+      <div class="dark" id = "box">
+
+          <div class="d-flex justify-content-center" id="h3">
+            <h3 class="font-weight-bolder font-size-xx-large text-success">Event Details..</h3>
+          </div>
+          <div class="form-group">
+            <pre>Event Title: <span>{{eventData.ename}}</span></pre>
+          </div>
+
+          <div class="form-group">
+            <pre>Date: <span>{{eventData.date}}</span></pre>
+          </div>
+
+          <div class="form-group">
+            <pre>Time: <span>{{eventData.time}}</span></pre>
+          </div>
+
+          <div class="form-group">
+            <pre>Details: <span>{{eventData.details}}</span></pre>
+          </div>
+          
+          <div class = "form-group d-flex justify-content-center">
+            <button class = "btn btn-danger font-weight-bold" (click) ="cancel()">Back</button>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,3 +1,6 @@
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+import { EventdetailsComponent } from './eventdetails/eventdetails.component';
 import { ShoweventsComponent } from './showevents/showevents.component';
 import { UserbookingComponent } from './userbooking/userbooking.component';
 import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
@@ -29,7 +32,10 @@ const routes: Routes = [
                         {path: 'edit', component: EditComponent},
                         {path: 'showMyBookings', component: ShowmybookingsComponent},
                         {path: 'userBookings', component: UserbookingComponent},
-                        {path: 'showEvents', component: ShoweventsComponent}
+                        {path: 'showEvents', component: ShoweventsComponent},
+                        {path: 'eventDetails', component: EventdetailsComponent},
+                        {path: 'about', component: AboutComponent},
+                        {path: 'contact', component: ContactComponent}
                        ];
 
 @NgModule({

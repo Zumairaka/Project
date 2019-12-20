@@ -29,6 +29,9 @@ import { EditComponent } from './edit/edit.component';
 import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
 import { UserbookingComponent } from './userbooking/userbooking.component';
 import { ShoweventsComponent } from './showevents/showevents.component';
+import { EventdetailsComponent } from './eventdetails/eventdetails.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { ShoweventsComponent } from './showevents/showevents.component';
     ShowmybookingsComponent,
     UserbookingComponent,
     ShoweventsComponent,
+    EventdetailsComponent,
+    AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

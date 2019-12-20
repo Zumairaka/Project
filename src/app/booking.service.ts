@@ -64,6 +64,20 @@ export class BookingService {
 
   saveEvent(eventData) {
     console.log(eventData);
-    return this.http.post('http://localhost/3000/event', eventData);
+    return this.http.post('http://localhost:3000/event', eventData);
   }
+
+  getEventData() {
+    return this.http.get('http://localhost:3000/event/getEvents');
+  }
+
+  getEvent(name, day, tym) {
+    return this.http.post('http://localhost:3000/event/getEvent', {ename: name, date: day, time: tym});
+  }
+
+  deleteEvent(name, day, tym) {
+    return this.http.post('http://localhost:3000/event/delete', {ename: name, date: day, time: tym});
+  }
+
+
 }
