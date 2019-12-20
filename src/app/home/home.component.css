@@ -12,3 +12,14 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.scroll {
+  height: 25%;
+  width: 25%;
+  background-color: rgba(0, 0, 0, 0.849);
+}
+h3 {
+  margin-top: 8%;
+  margin-bottom: 3%;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

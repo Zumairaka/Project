@@ -1,0 +1,38 @@
+body,
+html {
+  height: 1300px;
+}
+.bg{
+    /* The image used */
+    background-image: url("../../assets/Images/background.jpg");
+    /* Full height */
+    height: 1300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 0.5%;
+  }
+  #content{
+    padding-top: 2%;
+    height: 39%;
+    width: 40%;
+}
+#login{
+    padding: 7%;
+}
+#submit{
+    margin-right: 4%;
+}
+label{
+    color: white;
+    font-weight: bold;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+.dark{
+    background-color: rgba(0, 0, 0, 0.849);
+}
+.buttn {
+    color: black;
+}

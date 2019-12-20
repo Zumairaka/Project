@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { SliderModule } from 'angular-image-slider';
 import { DatePipe } from '@angular/common';
+import { NgMarqueeModule } from 'ng-marquee-improved';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
 import { UserbookingComponent } from './userbooking/userbooking.component';
+import { ShoweventsComponent } from './showevents/showevents.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { UserbookingComponent } from './userbooking/userbooking.component';
     EditComponent,
     ShowmybookingsComponent,
     UserbookingComponent,
+    ShoweventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { UserbookingComponent } from './userbooking/userbooking.component';
     ReactiveFormsModule,
     StorageServiceModule,
     SliderModule,
+    NgMarqueeModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [

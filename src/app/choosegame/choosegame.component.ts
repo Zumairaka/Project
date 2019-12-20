@@ -97,7 +97,7 @@ export class ChoosegameComponent implements OnInit {
           // Some bookings May or Maynot be there.
 
           this.checkingData = JSON.parse(JSON.stringify(data));
-          console.log(this.checkingData);
+          // console.log(this.checkingData);
 
           // mark the grounds which are booked.
           if (this.checkingData.length !== 0) {
@@ -116,7 +116,6 @@ export class ChoosegameComponent implements OnInit {
             }
           }
 
-          alert(this.ground1); alert(this.ground2); alert(this.ground3);
           if ((this.bookingData.teamSize === '7s') && (this.checkData === true) && (this.checkingData.length !== 0)) {
             this.checkData = false;
             alert('The Ground is not available for 7s. Please choose another time!');

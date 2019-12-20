@@ -1,3 +1,4 @@
+import { ShoweventsComponent } from './showevents/showevents.component';
 import { UserbookingComponent } from './userbooking/userbooking.component';
 import { ShowmybookingsComponent } from './showmybookings/showmybookings.component';
 import { EditComponent } from './edit/edit.component';
@@ -27,7 +28,8 @@ const routes: Routes = [
                         {path: 'details', component: DetailsComponent},
                         {path: 'edit', component: EditComponent},
                         {path: 'showMyBookings', component: ShowmybookingsComponent},
-                        {path: 'userBookings', component: UserbookingComponent}
+                        {path: 'userBookings', component: UserbookingComponent},
+                        {path: 'showEvents', component: ShoweventsComponent}
                        ];
 
 @NgModule({

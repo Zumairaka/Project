@@ -14,10 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const signupRouter = require('./src/routes/singupRoutes')();
 const loginRouter = require('./src/routes/loginRoutes')();
 const bookingRouter = require('./src/routes/bookingRoutes')();
+const eventRouter = require('./src/routes/eventRoutes')();
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/booking', bookingRouter);
+app.use('/event', eventRouter);
 
 mongoose.connect("mongodb://localhost:27017/FBMS");
 mongoose.set('useFindAndModify', false);

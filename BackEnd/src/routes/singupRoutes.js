@@ -9,7 +9,7 @@ function router() {
             res.header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS");
             signupModel.findOne({uname:req.body.uname}, (error,data)=> {
                 if (error) {
-                    throw error;
+                    res.json({'Status':'Error'});
                 } else {
                     if (!data) {
                         var player = new signupModel(req.body);

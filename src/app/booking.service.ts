@@ -61,4 +61,9 @@ export class BookingService {
   deleteUser(uname) {
     return this.http.post('http://localhost:3000/signup/delete', {name: uname});
   }
+
+  saveEvent(eventData) {
+    console.log(eventData);
+    return this.http.post('http://localhost/3000/event', eventData);
+  }
 }
