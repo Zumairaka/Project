@@ -1,3 +1,5 @@
+import { BookingService } from './../booking.service';
+import { EventData } from './../notifications/event.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public imagesUrl;
-  constructor() { }
+  eventData: EventData;
+  status: string;
+  constructor( private serviceObject: BookingService) { }
 
   ngOnInit() {
     this.imagesUrl = [
@@ -32,8 +36,17 @@ export class HomeComponent implements OnInit {
                       '../../assets/Images/image17.jpg',
                       '../../assets/Images/image18.jpg',
                       '../../assets/Images/image19.jpg',
-                      '../../assets/Images/image20.jpg',                      
+                      '../../assets/Images/image20.jpg',
                      ];
+
+    this.serviceObject.getEventData().subscribe((data) => {
+      this.status = JSON.parse(JSON.stringify(data)).Status;
+      if (this.status === 'Error') {
+        alert(this.status);
+      } else {
+        this.eventData = JSON.parse(JSON.stringify(data));
+      }
+    });
   }
 
 }
