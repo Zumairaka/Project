@@ -1,6 +1,6 @@
 <div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
   <div class="transparent">
-    <div class="d-flex justify-content-center" class="d-flex justify-content-center name">
+    <div class="d-flex justify-content-center name">
       <h4>Welcome {{name}}</h4>
     </div>
     <div class="d-flex justify-content-center logout">
@@ -14,16 +14,15 @@
         <button class=" btn btn-link font-weight-bolder colour" (click)="logout()">Logout</button>
       </div>
     </div>
-    
-    <div class="d-flex justify-content-center">
-      <h5 class="font-weight-bolder">The Ground Status Today</h5>
-    </div> 
 
 <!--Available Table-->
   <div class=" d-flex justify-content-center main">
     <div class="table-responsive available-table">
       <table class="table-dark table col-md-12">
         <thead>
+          <tr>
+            <th colspan="4" class="text-center text-success table-heading">The Ground Status Today</th>
+          </tr>
           <tr>
             <th >Time</th>
             <th >Ground 1</th>                    

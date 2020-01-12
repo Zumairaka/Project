@@ -45,7 +45,7 @@ export class ShowbookingsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['admin']);
+    this.router.navigate(['showBookings']);
   }
 
   deleteBooking(uname, date, time) {
@@ -62,6 +62,19 @@ export class ShowbookingsComponent implements OnInit {
 
   viewDetails(uname) {
     this.router.navigate(['details', {name: uname, flg: this.flag}]);
+  }
+
+  showUsers() {
+    this.router.navigate(['users']);
+  }
+
+  notifications() {
+    this.router.navigate(['notifications']);
+  }
+
+  logout(): void {
+    this.storage.remove('admin');
+    this.router.navigate(['']);
   }
 
 }

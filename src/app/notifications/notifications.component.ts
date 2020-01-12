@@ -61,7 +61,7 @@ export class NotificationsComponent implements OnInit {
         alert(this.status);
       } else {
         alert(this.status);
-        this.router.navigate(['admin']);
+        this.router.navigate(['showBookings']);
       }
     });
   }
@@ -75,7 +75,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['admin']);
+    this.router.navigate(['showBookings']);
   }
 
 }

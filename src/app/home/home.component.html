@@ -1,14 +1,14 @@
 <div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
         <angular-image-slider 
             [autoRotate]="true"
-            [autoRotateAfter]="8000"
+            [autoRotateAfter]="5000"
             [autoRotateRight]="true"
             [images]="imagesUrl">
         </angular-image-slider>
         <h3 class="text-center font-size-xx-large text-success font-weight-bolder" id="h3">NOTIFICATIONS..</h3>
         <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-center">
-                <ng-marquee>
+                <ng-marquee width="100px" vspace="20">
                     <mark *ngFor = "let evnt of eventData" class="bg-dark text-danger  font-weight-bolder font-size-large">
                     {{evnt.ename}}, {{evnt.date}}, {{evnt.time}}, {{evnt.details}} <br>
                     </mark>

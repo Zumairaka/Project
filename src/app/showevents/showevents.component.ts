@@ -44,7 +44,7 @@ export class ShoweventsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['admin']);
+    this.router.navigate(['showBookings']);
   }
 
   deleteEvent(ename, date, time) {

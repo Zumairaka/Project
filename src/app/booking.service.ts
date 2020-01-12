@@ -63,7 +63,6 @@ export class BookingService {
   }
 
   saveEvent(eventData) {
-    console.log(eventData);
     return this.http.post('http://localhost:3000/event', eventData);
   }
 

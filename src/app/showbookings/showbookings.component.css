@@ -23,7 +23,6 @@ html {
   margin-left:8%;
 }
 .table-heading {
-  padding-left: 30%;
   font-weight : bolder;
   font-size: large;
 }
@@ -32,9 +31,11 @@ html {
 }
 h4 {
   color: rgb(4, 4, 95);
-  margin-bottom: 8%;
 }
 h5 {
   font-size: xx-large;
   color: darkgreen;
+}
+.links {
+  margin-bottom: 8%;
 }

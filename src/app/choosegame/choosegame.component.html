@@ -38,7 +38,7 @@
 
           <div class="form-group">
             <label>Select A Time:*</label>
-            <select class="selectpicker" formControlName="time" (change)="checkStatus()" [ngClass]="{'is-invalid': submitted && f.time.errors, 'is-valid': submitted && f.time.valid}">
+            <select size="2" formControlName="time" (change)="checkStatus()" [ngClass]="{'is-invalid': submitted && f.time.errors, 'is-valid': submitted && f.time.valid}">
               <option value="" disabled>Time</option>
               <option *ngFor = "let time of availableTimes" [ngValue]="time">{{time}}</option>
             </select>
@@ -63,12 +63,11 @@
               <span>G3</span>
               <input type="checkbox" formControlName="ground3">
           </div>
-          
-          <div class = "form-group d-flex justify-content-center">
-            <button class = "btn btn-success font-weight-bold book" (click) = "bookMyGame()">BookMyGame</button>
-            <button class = "btn btn-danger font-weight-bold" (click) = "cancel()">Cancel</button>
-          </div>
         </form>
+        <div class = "form-group d-flex justify-content-center">
+          <button class = "btn btn-success font-weight-bold book" (click) = "bookMyGame(checkGame, bookingData)">BookMyGame</button>
+          <button class = "btn btn-danger font-weight-bold" (click) = "cancel()">Cancel</button>
+        </div>
       </div>
     </div>
 

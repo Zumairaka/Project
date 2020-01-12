@@ -21,7 +21,8 @@ app.use('/login', loginRouter);
 app.use('/booking', bookingRouter);
 app.use('/event', eventRouter);
 
-mongoose.connect("mongodb://localhost:27017/FBMS");
+//mongoose.connect("mongodb://localhost:27017/FBMS");
+mongoose.connect("mongodb+srv://Zumairaka:parveen00@cluster0-rops0.mongodb.net/FBMS?retryWrites=true&w=majority");
 mongoose.set('useFindAndModify', false);
 
 app.listen(process.env.PORT || 3000, function() {

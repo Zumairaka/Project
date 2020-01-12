@@ -23,13 +23,12 @@ html {
   font-size: xx-large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-main{
-  margin-top: 8%;
-}
 #content{
   padding-top: 2%;
   height: 29%;
   width: 40%;
+  margin-top: 10%;
+
 }
 #login{
   padding: 7%;

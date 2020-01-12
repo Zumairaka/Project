@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.loginData.password = this.loginForm.get('password').value;
     console.log(this.loginData);
     if ((this.loginData.uname === 'kickoff_admin') && (this.loginData.password === 'Kickoff@987')) {
-      this.router.navigate(['admin']);
+      this.router.navigate(['showBookings']);
       this.storage.set('admin', this.loginData.uname);
     } else {
       this.serviceObject.loginVerify(this.loginData)

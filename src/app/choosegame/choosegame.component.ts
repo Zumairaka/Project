@@ -202,11 +202,11 @@ export class ChoosegameComponent implements OnInit {
     this.checkGame = false;
   }
 
-  bookMyGame() {
-    this.checkData = false;
-    if (this.checkGame === true) {
+  bookMyGame(checkGame, bookingData) {
+    // this.checkData = false;
+    if (checkGame === true) {
       // console.log(this.bookingData);
-      this.serviceObject.saveMyGame(this.bookingData)
+      this.serviceObject.saveMyGame(bookingData)
         .subscribe((data) => {
           this.status = JSON.parse(JSON.stringify(data)).Status;
           alert(this.status);

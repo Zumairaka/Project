@@ -1,11 +1,12 @@
 <div class="bg col-sm-4 col-md-6 col-lg-8 col-xl-12">
     <div class="transparent">
       <div class="d-flex justify-content-center">
-        <h4>Admin</h4>
+        <h4>Welcome Administrator</h4>
       </div>
-    
-      <div class="d-flex text-primary justify-content-center">
-        <h5 class="font-weight-bolder">Booked Games...</h5>
+      <div class="d-flex justify-content-center links">
+        <button class="btn btn-link font-weight-bolder logout" (click)="logout()">Logout</button>
+        <button class="btn btn-link font-weight-bolder logout" (click)="showUsers()">All_Users</button>
+        <button class="btn btn-link font-weight-bolder logout" (click)="notifications()">Add_Notifications</button>
       </div>
   
   <!--Available Table-->
@@ -13,6 +14,9 @@
       <div class="table-responsive">
         <table class="table-dark table col-md-12">
           <thead>
+            <tr>
+              <th colspan="8" class="text-center text-success table-heading">Booked Games</th>
+            </tr>
             <tr>
               <th>Date</th>
               <th>Time</th>
