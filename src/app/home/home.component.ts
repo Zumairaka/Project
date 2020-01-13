@@ -9,44 +9,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public imagesUrl;
   eventData: EventData;
   status: string;
+  images;
+  slideconfig;
   constructor( private serviceObject: BookingService) { }
 
   ngOnInit() {
-    this.imagesUrl = [
-                      '../../assets/Images/image00.jpg',
-                      '../../assets/Images/image01.jpg',
-                      '../../assets/Images/image02.jpg',
-                      '../../assets/Images/image03.jpg',
-                      '../../assets/Images/image04.jpg',
-                      '../../assets/Images/image05.jpg',
-                      '../../assets/Images/image06.jpg',
-                      '../../assets/Images/image07.jpg',
-                      '../../assets/Images/image08.jpg',
-                      '../../assets/Images/image09.jpg',
-                      '../../assets/Images/image10.jpg',
-                      '../../assets/Images/image11.jpg',
-                      '../../assets/Images/image12.jpg',
-                      '../../assets/Images/image13.jpg',
-                      '../../assets/Images/image14.jpg',
-                      '../../assets/Images/image15.jpg',
-                      '../../assets/Images/image16.jpg',
-                      '../../assets/Images/image17.jpg',
-                      '../../assets/Images/image18.jpg',
-                      '../../assets/Images/image19.jpg',
-                      '../../assets/Images/image20.jpg',
+        this.images = [
+                      { img: '../../assets/Images/image00.jpg' },
+                      { img: '../../assets/Images/image01.jpg' },
+                      { img: '../../assets/Images/image02.jpg' },
+                      { img: '../../assets/Images/image03.jpg' },
+                      { img: '../../assets/Images/image04.jpg' },
+                      { img: '../../assets/Images/image05.jpg' },
+                      { img: '../../assets/Images/image06.jpg' },
+                      { img: '../../assets/Images/image07.jpg' },
+                      { img: '../../assets/Images/image08.jpg' },
+                      { img: '../../assets/Images/image09.jpg' },
+                      { img: '../../assets/Images/image10.jpg' },
+                      { img: '../../assets/Images/image11.jpg' },
+                      { img: '../../assets/Images/image12.jpg' },
+                      { img: '../../assets/Images/image13.jpg' },
+                      { img: '../../assets/Images/image14.jpg' },
+                      { img: '../../assets/Images/image15.jpg' },
+                      { img: '../../assets/Images/image16.jpg' },
+                      { img: '../../assets/Images/image17.jpg' },
+                      { img: '../../assets/Images/image18.jpg' },
+                      { img: '../../assets/Images/image19.jpg' },
+                      { img: '../../assets/Images/image20.jpg' }
                      ];
 
-    this.serviceObject.getEventData().subscribe((data) => {
-      this.status = JSON.parse(JSON.stringify(data)).Status;
-      if (this.status === 'Error') {
-        alert(this.status);
-      } else {
-        this.eventData = JSON.parse(JSON.stringify(data));
-      }
-    });
+        this.slideconfig = {
+                      slidesToShow: 3,
+                      slidesToScroll: 3,
+                      dots: true,
+                      infinite: true,
+                      autoplay: true,
+                      autoplayspeed: 3000
+                    };
+
+        this.serviceObject.getEventData().subscribe((data) => {
+          this.status = JSON.parse(JSON.stringify(data)).Status;
+          if (this.status === 'Error') {
+            alert(this.status);
+          } else {
+            this.eventData = JSON.parse(JSON.stringify(data));
+          }
+        });
   }
 
 }

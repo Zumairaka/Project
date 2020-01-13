@@ -12,6 +12,10 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.slick-slider {  
+  width: 90%; 
+  margin: auto;  
+}
 .scroll {
   height: 25%;
   width: 25%;

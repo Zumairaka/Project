@@ -6,9 +6,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'angular-webstorage-service';
-import { SliderModule } from 'angular-image-slider';
 import { DatePipe } from '@angular/common';
 import { NgMarqueeModule } from 'ng-marquee-improved';
+import { SlickCarouselModule} from 'ngx-slick-carousel';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -64,8 +64,8 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
     StorageServiceModule,
-    SliderModule,
     NgMarqueeModule,
+    SlickCarouselModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [
